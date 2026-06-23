@@ -35,6 +35,11 @@ class PartialGenerator(TreeGenerator):
             return acl_func(device)
         return None
 
+    def acl_dangerous(self, device):
+        if acl_func := self._get_vendor_func(device.hw.vendor, "acl_dangerous"):
+            return acl_func(device)
+        return None
+
     def run(self, device) -> Iterable[Union[str, tuple]] | None:
         if run_func := self._get_vendor_func(device.hw.vendor, "run"):
             return run_func(device)

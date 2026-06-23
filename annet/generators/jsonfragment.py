@@ -45,6 +45,17 @@ class JSONFragment(TreeGenerator):
         """
         raise NotImplementedError("Required ACL for JSON_FRAGMENT generator")
 
+    def acl_dangerous(self, device: Device) -> Union[str, list[str]]:
+        """
+        Restrict the generator to a specified dangerous ACL using JSON Pointer syntax.
+
+        Dangerous changes to configuration may cause device malfunctions till
+        full configuration reload.
+
+        Expected ACL to be a list of strings, but a single string is also allowed.
+        """
+        raise NotImplementedError("Required ACL for JSON_FRAGMENT generator")
+
     def run(self, device: Device):
         raise NotImplementedError
 
